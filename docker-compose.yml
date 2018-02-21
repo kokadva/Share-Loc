@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgis:
+      image: openmaptiles/postgis
+      ports:
+       - 5432:5432
+      environment:
+       - POSTGRES_PASSWORD=shareloc
+       - POSTGRES_USER=shareloc
+       - POSTGRES_DB=shareloc
+  geoserver:
+      image: kartoza/geoserver
+      ports:
+       - 8080:8080
+      depends_on:
+       - postgis
