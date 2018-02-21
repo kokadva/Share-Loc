@@ -1,27 +1,31 @@
 # Share-Loc
 
-Share loccation
+## Share loccation
 
-Home project
+### Home project
 
 
-First of all i'll tell which technologies I use:
+Technologies used in the project:
 
-1. Docker 
-2. Postgresql-Postgis
+```
+1. Docker
+2. Postgresql + Postgis
 3. Geoserver
 4. Openlayers
-5. Python-Flask
+5. Python + Flask-Marshmallow
+```
 
 Let's start with docker
 Install docker CE (Comunity Edition) on your system, I use docker for setting up Geoserver and Postgis
 
-
-To set up Postgis DB I've chosen openmaptiles/postgis docker image, for Geoserver kartoza/geoserver image.
-If you are not familiar with Geoserver I suggest looking briefly into it and get some knowledge on Geo info services like WMS, WFS and etc. 
+For postgis I've chosen openmaptiles/postgis and for Geoserver kartoza/geoserver docker images.
+If you are not familiar with Geoserver I suggest looking briefly into it and getting some knowledge on Geo info services like WMS, WFS and etc. 
 (http://geoserver.org/)
 
-To set up Postgis-Geoserver clone this repository into your local machine and run docker-compose up in the repository folder
+To setup Postgis and Geoserver clone the repository into your local machine and in the repository folder run:
+```
+  - docker-compose up 
+```
 
 So now to check if everything is working go to localhost:8080/geoserver 
 Log in with username: admin password: geoserver
