@@ -17,20 +17,27 @@ Let's start with docker
 Install docker CE (Comunity Edition) on your system, I use docker for setting up Geoserver and Postgis
 
 
-To set up Postgis DB I've chosen kartoza/postgis docker image
-Run commands in the docker cli to start Postgresql + postgis in a container:
-  - docker run -e POSTGRES_DB="shareloc" -e POSTGRES_USER="user" -e POSTGRES_PASSWORD="password" -p 5432:5432 --name "postgis" -d openmaptiles/postgis
-  
-With this command postgis image will run in a container and will be available on port 5432, username: user, password: password, db_name: shareloc
-
-Setting up postgis is done now it's time for Geoserver, if you are not familiar with Geoserver I suggest looking breafly into it and get some knowledge on Geo info services like WMS, WFS and etc. 
+To set up Postgis DB I've chosen openmaptiles/postgis docker image, for Geoserver kartoza/geoserver image.
+If you are not familiar with Geoserver I suggest looking briefly into it and get some knowledge on Geo info services like WMS, WFS and etc. 
 (http://geoserver.org/)
 
-For Geoserver to setup I chose kartoza/geoserver image 
-Run commands in the docker cli to start Geoserver in a container:
-  - sudo docker run --name "geoserver"  --link postgis:postgis -p 8080:8080 -d -t kartoza/geoserver
- 
+To set up Postgis-Geoserver clone this repository into your local machine and run docker-compose up in the repository folder
+
 So now to check if everything is working go to localhost:8080/geoserver 
 Log in with username: admin password: geoserver
 Go to Workspaces, add workspace with name shareloc-postgis, type same in the namespace URI and submit
-Go to Stores, add new store, choose PostGIS, name store 
+Go to Stores, add new store, choose PostGIS, 
+  Data Source Name: test
+  host: postgis
+  port: 5432
+  database: shareloc
+  schema: <empty>
+  user: shareloc
+  password: shareloc
+click save
+There will com up a page New Layer with a table consisting of two rows, click publish of "country_osm_grid"
+Scroll down to Bounding Boxes section, click Compute from data, and Compute from native bounds
+Switch to Publishing section at the top and in the WMS settings, Layer settings, Default style choose polygon
+Scroll down and click save
+Go to Layer Preview section, a row country_osm_grid must be present, click Openlayers in Common formats columns
+A map and a world map must appear, that means that you've set up postgis and geoserver correctly.
