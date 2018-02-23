@@ -13,6 +13,6 @@ db_type = 'postgis'
 layer_name = 'country_osm_grid'
 
 g = GeoserverShell(rest_url)
-g.create_workspace(workspace)
-g.create_store(workspace, store, postgis_host, port, database, user, password, db_type)
-g.publish_layer(workspace, store, layer_name)
+print(g.create_workspace(workspace))
+print(g.create_store(workspace, store, postgis_host, port, database, user, password, db_type))
+print(g.publish_layer(workspace, store, layer_name))
