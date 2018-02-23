@@ -4,7 +4,6 @@
 
 ### Home project
 
-
 Technologies used in the project:
 
 ```
