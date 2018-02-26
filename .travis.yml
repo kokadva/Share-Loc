@@ -6,3 +6,8 @@ install:
 notifications:
   email:
     - cdval13@freeuni.edu.ge
+services:
+  - docker
+before_insetall:
+  - docker image build geoserver-shell/ -t publish
+  - docker-compose up
