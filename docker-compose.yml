@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 services:
   postgis:
     image: openmaptiles/postgis
@@ -13,12 +13,13 @@ services:
     ports:
      - 8080:8080
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/geoserver"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/geoserver/rest"]
       interval: 1s
-      timeout: 3s
+      timeout: 1s
       retries: 60
+    depends_on:
+      - postgis
   layer_publisher:
     image: publish
     depends_on:
-      geoserver:
-        condition: service_healthy
+      - geoserver
