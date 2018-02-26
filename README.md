@@ -23,7 +23,7 @@ If you are not familiar with Geoserver I suggest looking briefly into it and get
 
 To setup Postgis and Geoserver clone the repository into your local machine and in the repository folder run:
 ```
-  - cd geoserver-shell && docker image build . -t publish
+  - docker image build geoserver-shell/ -t publish
   - docker-compose up 
 ```
 
