@@ -1,16 +1,25 @@
-version: '3'
+version: '2.1'
 services:
   postgis:
-      image: openmaptiles/postgis
-      ports:
-       - 5432:5432
-      environment:
-       - POSTGRES_PASSWORD=shareloc
-       - POSTGRES_USER=shareloc
-       - POSTGRES_DB=shareloc
+    image: openmaptiles/postgis
+    ports:
+     - 5432:5432
+    environment:
+     - POSTGRES_PASSWORD=shareloc
+     - POSTGRES_USER=shareloc
+     - POSTGRES_DB=shareloc
   geoserver:
-      image: kartoza/geoserver
-      ports:
-       - 8080:8080
-      depends_on:
-       - postgis
+    image: kartoza/geoserver
+    ports:
+     - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/geoserver"]
+      interval: 1s
+      timeout: 3s
+      retries: 60
+      start_period: 40s
+  layer_publisher:
+    image: publish
+    depends_on:
+      geoserver:
+        condition: service_healthy

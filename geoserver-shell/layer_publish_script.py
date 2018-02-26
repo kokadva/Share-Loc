@@ -2,7 +2,7 @@ from geoserver import GeoserverShell
 
 workspace = 'shareloc'
 store = 'shareloc-postgis'
-rest_url = "http://localhost:8080/geoserver/rest/"
+rest_url = "http://geoserver:8080/geoserver/rest/"
 
 postgis_host = 'postgis'
 port = '5432'
