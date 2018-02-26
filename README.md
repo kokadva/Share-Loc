@@ -30,4 +30,4 @@ To setup Postgis and Geoserver clone the repository into your local machine and 
 So now to check if everything is working: 
 * Go to http://localhost:8080/geoserver <br />
 * Go to Layer Preview section, a row country_osm_grid must be present, click Openlayers in Common formats columns <br />
-* A map and a world map must appear, that means that you've set up postgis and geoserver correctly. <br />
+* A map and a world map must appear, that means that postgis and geoserver are working correctly. <br />
