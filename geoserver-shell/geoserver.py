@@ -40,7 +40,7 @@ class GeoserverShell(object):
         }
         request_url = urljoin(self.url, resourse)
         r = requests.post(request_url, data=json.dumps(payload), headers=self.default_headers, auth=self.credential)
-        return r.status_code, r.text
+        return r.status_code
 
     def get_workspaces(self):
         request_url = urljoin(self.url, workspaces_resource)
@@ -57,4 +57,4 @@ class GeoserverShell(object):
         }
         request_url = urljoin(self.url, resourse)
         r = requests.post(request_url, data=json.dumps(payload), headers=self.default_headers, auth=self.credential)
-        return r.status_code, r.text
+        return r.status_code
