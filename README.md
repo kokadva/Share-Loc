@@ -2,6 +2,8 @@
 
 ## Share loccation
 
+An app where you login and see all users locations which are also logged in. You can draw geometric figures on the map which will be seen by everybody. 
+
 ### Home project
 
 Technologies used in the project:
@@ -12,6 +14,7 @@ Technologies used in the project:
 3. Geoserver
 4. Openlayers
 5. Python + Flask-Marshmallow
+6. Vue.js
 ```
 
 Let's start with docker
@@ -30,4 +33,4 @@ To setup Postgis and Geoserver clone the repository into your local machine and 
 So now to check if everything is working: 
 * Go to http://localhost:8080/geoserver <br />
 * Go to Layer Preview section, a row country_osm_grid must be present, click Openlayers in Common formats columns <br />
-* A map and a world map must appear, that means that postgis and geoserver are working correctly. <br />
+* A world map must appear, that means that postgis and geoserver are connected and working correctly. <br />
