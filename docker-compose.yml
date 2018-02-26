@@ -1,4 +1,4 @@
-version: '3'
+version: '2.1'
 services:
   postgis:
     image: openmaptiles/postgis
@@ -17,9 +17,8 @@ services:
       interval: 1s
       timeout: 1s
       retries: 60
-    depends_on:
-      - postgis
   layer_publisher:
     image: publish
     depends_on:
-      - geoserver
+      geoserver:
+        condition: service_healthy
