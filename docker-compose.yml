@@ -30,3 +30,8 @@ services:
     image: flaskapp
     ports:
       - 8000:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/ping"]
+      interval: 1s
+      timeout: 1s
+      retries: 60
