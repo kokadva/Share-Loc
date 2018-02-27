@@ -1,5 +1,6 @@
 version: '2.1'
 services:
+
   postgis:
     image: openmaptiles/postgis
     ports:
@@ -8,6 +9,7 @@ services:
      - POSTGRES_PASSWORD=shareloc
      - POSTGRES_USER=shareloc
      - POSTGRES_DB=shareloc
+
   geoserver:
     image: kartoza/geoserver
     ports:
@@ -17,8 +19,14 @@ services:
       interval: 1s
       timeout: 1s
       retries: 60
+
   layer_publisher:
     image: publish
     depends_on:
       geoserver:
         condition: service_healthy
+
+  flask_app:
+    image: flaskapp
+    ports:
+      - 8000:8000
