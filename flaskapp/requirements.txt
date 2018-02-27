@@ -1,2 +1,9 @@
+# DB
 sqlalchemy
 geoalchemy2
+
+# Flask
+flask
+flask_marshmallow
+flask_sqlalchemy
+marshmallow_sqlalchemy
