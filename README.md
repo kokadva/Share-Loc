@@ -27,7 +27,7 @@ If you are not familiar with Geoserver I suggest looking briefly into it and get
 To setup Postgis and Geoserver clone the repository into your local machine and in the repository folder run:
 ```
   - docker image build geoserver-shell/ -t publish
-  - docker image build flaskapp/ -t flaskapp
+  - docker image build flask-app/ -t flaskapp
   - docker-compose up 
 ```
 

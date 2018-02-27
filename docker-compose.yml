@@ -15,9 +15,9 @@ services:
     ports:
      - 8080:8080
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/geoserver/rest"]
-      interval: 1s
-      timeout: 1s
+      test: ["CMD", "curl", "-f", "http://localhost:8080/geoserver"]
+      interval: 3s
+      timeout: 3s
       retries: 60
 
   layer_publisher:
@@ -32,6 +32,6 @@ services:
       - 8000:8000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/ping"]
-      interval: 1s
-      timeout: 1s
+      interval: 3s
+      timeout: 3s
       retries: 60
