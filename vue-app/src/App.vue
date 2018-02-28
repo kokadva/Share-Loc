@@ -1,9 +1,9 @@
 <template>
-  <login-form></login-form>
+  <login-from-component></login-from-component>
 </template>
 
 <script>
 </script>
 
-<style>
+<style lang="scss">
 </style>
