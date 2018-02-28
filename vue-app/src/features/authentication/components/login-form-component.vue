@@ -33,7 +33,7 @@ export default {
   },
   methods: {
       login: function () {
-        console.log(this.username, this.password);
+        this.$router.push('/map')
       }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <login-from-component></login-from-component>
+  <router-view></router-view>
 </template>
 
 <script>
