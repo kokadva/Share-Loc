@@ -1,8 +1,5 @@
-<template xmlns:v-on="http://www.w3.org/1999/xhtml">
-  <div>
-    <div id="map" class="map"></div>
-
-  </div>
+<template>
+  <div id="map" class="map"></div>
 </template>
 
 <script>
