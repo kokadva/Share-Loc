@@ -12,6 +12,7 @@
   "dependencies": {
     "ol": "^4.6.4",
     "vue": "^2.5.11",
+    "vue-resource": "^1.4.0",
     "vue-router": "^3.0.1"
   },
   "browserslist": [

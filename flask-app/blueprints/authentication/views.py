@@ -15,8 +15,10 @@ login_request_schema = LoginRequestSchema()
 def login():
     login_request = login_request_schema.load(request.json).data
     user = User.find_by(login_request.username, login_request.password)
-    user.update_token()
-    return jsonify(login_response_schema.dump(user).data)
+    if not (user is None):
+        user.update_token()
+        return jsonify(login_response_schema.dump(user).data)
+    return 'Internal error', 500
 
 
 @authentication_bluepring.route('/logout', methods=['POST'])
