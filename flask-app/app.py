@@ -1,5 +1,3 @@
-from flask_cors import CORS
-
 from blueprints.authentication.views import authentication_bluepring
 from blueprints.ping.views import ping_bluepring
 from extensions import ma, db, cors
@@ -26,8 +24,8 @@ def init_extensions():
 
 if __name__ == '__main__':
     init_app()
-    # with app.app_context():
-        # db.drop_all()
-        # db.create_all()
-        # db.session.commit()
+    with app.app_context():
+        db.drop_all()
+        db.create_all()
+        db.session.commit()
     app.run(host='0.0.0.0', port=8000, debug=True)

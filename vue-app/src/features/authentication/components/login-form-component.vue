@@ -33,12 +33,16 @@
     },
     methods: {
       login: function () {
-        this.$http.post('http://0.0.0.0:8000/rest-auth/login', {'username': this.username, 'password': this.password}).then(response => {
-          console.log(response.body)
+        var self = this;
+        this.$http.post('http://0.0.0.0:8000/rest-auth/login', {
+          'username': this.username,
+          'password': this.password
+        }).then(response => {
+          self.$router.push('/map');
+          localStorage.setItem('token', response.body.token);
         }, response => {
           console.log("Error");
         });
-//        this.$router.push('/map')
       }
     }
   }

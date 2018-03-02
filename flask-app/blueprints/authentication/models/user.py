@@ -13,9 +13,14 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     token = db.Column(db.String, nullable=False)
 
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+        self.token = self.generate_token()
+
     @classmethod
-    def find_by(cls, username, password):
-        return User.query.filter_by(username=username, password=password).first()
+    def find_by_username(cls, username):
+        return User.query.filter_by(username=username).first()
 
     @classmethod
     def generate_token(cls):
