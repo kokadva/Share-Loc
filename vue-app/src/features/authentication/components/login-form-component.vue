@@ -10,7 +10,8 @@
         </div>
 
         <div class="wrap-input100 validate-input m-b-35" data-validate="Enter password">
-          <input v-model='password' class="input100" type="password" name="pass">
+          <label v-if="password_incorrect" for="password">Password incorrect</label>
+          <input id="password" v-model='password' class="input100" type="password" name="pass">
         </div>
 
         <div class="container-login100-form-btn">
@@ -27,6 +28,7 @@
   export default {
     data () {
       return {
+        password_incorrect: false,
         username: '',
         password: ''
       }
@@ -42,6 +44,7 @@
           localStorage.setItem('token', response.body.token);
         }, response => {
           console.log("Error");
+          this.password_incorrect = true;
         });
       }
     }
