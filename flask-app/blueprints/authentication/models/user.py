@@ -23,6 +23,10 @@ class User(db.Model):
         return User.query.filter_by(username=username).first()
 
     @classmethod
+    def find_by_tolen(cls, token):
+        return User.query.filter_by(token=token).first()
+
+    @classmethod
     def generate_token(cls):
         return binascii.b2a_hex(os.urandom(15)).decode("utf-8")
 
@@ -34,3 +38,4 @@ class User(db.Model):
         self.token = User.generate_token()
         db.session.add(self)
         db.session.commit()
+        return self

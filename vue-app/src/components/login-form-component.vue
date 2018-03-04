@@ -40,8 +40,9 @@
           'username': this.username,
           'password': this.password
         }).then(response => {
-          self.$router.push('/map');
+            console.log(response.body.token);
           localStorage.setItem('token', response.body.token);
+          self.$router.push('/map');
         }, response => {
           console.log("Error");
           this.password_incorrect = true;

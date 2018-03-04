@@ -4,6 +4,7 @@ from flask import request
 
 from blueprints.authentication.models.user import User
 from blueprints.authentication.schemas.user_schema import LoginRequestSchema, LoginResponseSchema
+from blueprints.user_location.models.user_location import UserLocation
 
 authentication_bluepring = Blueprint('authentication', __name__, url_prefix='/rest-auth')
 
@@ -18,6 +19,7 @@ def login():
     user = User.find_by_username(login_request.username)
     if user is None:
         user = User(login_request.username, login_request.password).save()
+        UserLocation(user.id).save()
         return jsonify(login_response_schema.dump(user).data)
     if user.password != login_request.password:
         return make_response(jsonify({'message': 'Password is incrorrect'}), 401)

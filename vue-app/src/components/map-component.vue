@@ -63,14 +63,23 @@
         tracking: true
       });
 
-      this.geolocation.on('change:position', this.onChangeLocation);
+      this.geolocation.on('change:position', this.updatePostionFeature);
 
 
     },
     methods: {
-      onChangeLocation: function () {
+      updatePostionFeature: function () {
         var coordinates = this.geolocation.getPosition();
+        console.log(coordinates);
         this.positionFeature.setGeometry(coordinates ? new ol.geom.Point(coordinates) : null);
+        this.$http.post('http://0.0.0.0:8000/rest/location/update', {
+          'token': localStorage.getItem('token'),
+          'coordinates': coordinates
+        }).then(response => {
+            console.log(response.body.token);
+        }, response => {
+          console.log("Error");
+        });
       }
     }
   }
