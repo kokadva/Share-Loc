@@ -1,6 +1,7 @@
 # DB
 sqlalchemy
 geoalchemy2
+psycopg2
 
 # Flask
 flask
@@ -11,6 +12,7 @@ flask-cors
 
 # Geometry
 shapely
+geojson
 
 # SSL
 pyopenssl

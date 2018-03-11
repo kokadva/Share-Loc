@@ -10,7 +10,7 @@ database = 'shareloc'
 user = 'shareloc'
 password = 'shareloc'
 db_type = 'postgis'
-layer_name = 'country_osm_grid'
+layer_name = 'geometry_drawings'
 
 g = GeoserverShell(rest_url)
 print(g.create_workspace(workspace))
